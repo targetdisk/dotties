@@ -76,7 +76,7 @@ if executable('vimscript-language-server')
     autocmd User lsp_setup call lsp#register_server({
         \ 'name': 'vimscript-language-server',
         \ 'cmd': {server_info->['vimscript-language-server']},
-        \ 'whitelist': ['vim'],
+        \ 'allowlist': ['vim'],
         \ 'initialization_options': {
         \   'vimruntime': $VIMRUNTIME,
         \   'runtimepath': &rtp,
@@ -185,6 +185,7 @@ endif
 " map <F5> :w!<cr>:!perl %<cr>
 " map <F6> :w!<cr>:!python %<cr>
 " map <F7> :w!<cr>:!bash %<cr>
+map <F2> :!git blame %<cr>
 map <F5> :w!<cr>:!xelatex %<cr>
 map <F9> :w!<cr>:!md-previewer %<cr>
 map <F12> :mksession!<cr>
