@@ -60,6 +60,15 @@ if executable('pylsp')
         \ })
 endif
 
+" Perl
+if executable('pls')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'pls',
+        \ 'cmd': {server_info->['pls']},
+        \ 'allowlist': ['perl'],
+        \ })
+endif
+
 " Bash
 if executable('bash-language-server')
     au User lsp_setup call lsp#register_server({
