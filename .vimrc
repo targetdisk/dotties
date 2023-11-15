@@ -14,6 +14,17 @@ au BufRead,BufNewFile *MSG        setlocal spell
 au BufRead,BufNewFile COMMIT*     setlocal spell
 au BufRead,BufNewFile *.markdown  setlocal spell
 
+function! MacPorty()
+  set fileencoding=utf-8
+  " set ft=portfile
+  set filetype=tcl
+  set shiftwidth=4
+  set tabstop=4
+  set softtabstop=4
+endfunction
+
+au BufRead,BufNewFile *Portfile    call MacPorty()
+
 " Vundle reqs
 set nocompatible
 filetype off
@@ -100,6 +111,14 @@ if executable('clangd')
         \ 'cmd': {server_info->['clangd']},
         \ 'allowlist': ['c', 'cpp', 'objc', 'objcpp'],
         \ })
+elseif executable('ccls')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'ccls',
+        \ 'cmd': {server_info->['ccls']},
+        \ 'root_uri': {server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'compile_commands.json'))},
+       \ 'initialization_options': {},
+       \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp', 'cc'],
+       \ })
 endif
 "
 " Rust
