@@ -1,0 +1,16 @@
+alias ls='ls -G'
+
+blsc() { alias ls='ls -G'; }
+unuu-me() { PATH="$(sed 's/\/opt\/local\/libexec\/uutils://' <<<$PATH)"; blsc; }
+ungnu-me() { PATH="$(sed 's/\/opt\/local\/libexec\/gnubin://' <<<$PATH)"; blsc; }
+un-me() { ungnu-me; unuu-me; }
+
+gnu-me() {
+  alias ls='ls --color'
+  PATH="/opt/local/libexec/gnubin:$PATH"
+}
+
+uu-me() {
+  alias ls='ls --color'
+  PATH="/opt/local/libexec/uutils:$PATH"
+}
