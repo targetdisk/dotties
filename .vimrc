@@ -209,11 +209,28 @@ if has("autocmd")
   filetype plugin indent on
 endif
 
+" Mac-specific stuffs
+if has('macunix')
+  " Hacks for MacPorts Bash to actually work.
+  function! Terminal()
+    execute 'ter bash --rcfile /etc/bashrc -i'
+  endfunction
+  function! VertTerminal()
+    execute 'vert ter bash --rcfile /etc/bashrc -i'
+  endfunction
+else
+  function! Terminal()
+    execute 'ter'
+  endfunction
+  function! VertTerminal()
+    execute 'vert ter'
+  endfunction
+endif
 " Super special mappings
-" map <F5> :w!<cr>:!perl %<cr>
-" map <F6> :w!<cr>:!python %<cr>
-" map <F7> :w!<cr>:!bash %<cr>
-map <F2> :!git blame %<cr>
+map <F1> :call Terminal()<cr>
+map <S-F1> :call VertTerminal()<cr>
+map <F2> :!git grep -n '<cword>' $(git rev-parse --show-toplevel)<cr>
+map <F3> :!git blame %<cr>
 map <F5> :w!<cr>:!xelatex %<cr>
 map <F9> :w!<cr>:!md-previewer %<cr>
 map <F12> :mksession!<cr>
