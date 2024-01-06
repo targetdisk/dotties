@@ -1,0 +1,27 @@
+#[%MACPORTS%]#
+# MacPorts Installer addition on 2023-01-11_at_01:28:57: adding an appropriate PATH variable for use with MacPorts.
+export PATH="$HOME/Library/Python/3.11/bin:$HOME/perl5/bin:/opt/local/bin:/opt/local/sbin:/Applications/ArmGNUToolchain/12.2.rel1/arm-none-eabi/bin:$PATH"
+# Finished adapting your PATH environment variable for use with MacPorts.
+#[%MACPORTS%]#
+
+PS1='\h:\W \u\$ '
+
+[ $(uname) == 'Darwin' ] &&
+    command -v port >/dev/null &&
+        command -v uname >/dev/null
+        if [ $? ]; then
+            . /opt/local/etc/bashrc
+            . /opt/local/etc/bashrc.mac
+            . /opt/local/etc/bash_completion
+        fi
+
+export PERL5LIB="$HOME/perl5/lib/perl5:$PERL5LIB"
+
+eval $(ssh-agent)
+. "$HOME/.cargo/env"
+
+alias ls='ls -G'
+
+for af in $HOME/.aliases/*; do
+    . "$af"
+done
