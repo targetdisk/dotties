@@ -202,6 +202,10 @@ set ruler
 set number
 "set autoindent
 set cursorline
+"set background=dark
+
+" For login terminals on Macs
+set shell=bash\ -l
 
 " Filetype auto-indent
 if has("autocmd")
@@ -209,23 +213,13 @@ if has("autocmd")
   filetype plugin indent on
 endif
 
-" Mac-specific stuffs
-if has('macunix')
-  " Hacks for MacPorts Bash to actually work.
-  function! Terminal()
-    execute 'ter bash --rcfile /etc/bashrc -i'
-  endfunction
-  function! VertTerminal()
-    execute 'vert ter bash --rcfile /etc/bashrc -i'
-  endfunction
-else
-  function! Terminal()
-    execute 'ter'
-  endfunction
-  function! VertTerminal()
-    execute 'vert ter'
-  endfunction
-endif
+function! Terminal()
+  execute 'ter'
+endfunction
+function! VertTerminal()
+  execute 'vert ter'
+endfunction
+
 " Super special mappings
 map <F1> :call Terminal()<cr>
 map <S-F1> :call VertTerminal()<cr>
