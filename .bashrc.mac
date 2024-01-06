@@ -1,4 +1,14 @@
-alias ls='ls -G'
+#!/usr/bin/env bash
+
+# System-wide .bashrc file for interactive bash(1) shells.
+if [ -z "$PS1" ]; then
+   return
+fi
+
+# Make bash check its window size after a process completes
+shopt -s checkwinsize
+
+[ -r "/etc/bashrc_$TERM_PROGRAM" ] && . "/etc/bashrc_$TERM_PROGRAM"
 
 blsc() { alias ls='ls -G'; }
 unuu-me() { PATH="$(sed 's/\/opt\/local\/libexec\/uutils://' <<<$PATH)"; blsc; }
