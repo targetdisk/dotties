@@ -104,8 +104,10 @@
 	ywDWAN4A6wEAAQMBBwEJAQsBDQEWARsBIQEpASsBLQEvATES0RLWEuES6hL3EvoTBxMQ
 	ExUTHQAAAAAAAAIBAAAAAAAAADUAAAAAAAAAAAAAAAAAABMg
 	</data>
+	<key>Bell</key>
+	<false/>
 	<key>CommandString</key>
-	<string>/opt/local/bin/bash --login --rcfile /opt/local/etc/bashrc</string>
+	<string></string>
 	<key>Font</key>
 	<data>
 	YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0b3BYJG9iamVjdHMS
@@ -126,7 +128,7 @@
 	<key>fontAllowsDisableAntialias</key>
 	<true/>
 	<key>name</key>
-	<string>Basic</string>
+	<string>Basic Andrea</string>
 	<key>noWarnProcesses</key>
 	<array>
 		<dict>
@@ -136,10 +138,6 @@
 		<dict>
 			<key>ProcessName</key>
 			<string>tmux</string>
-		</dict>
-		<dict>
-			<key>ProcessName</key>
-			<string>vim</string>
 		</dict>
 	</array>
 	<key>type</key>
