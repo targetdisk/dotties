@@ -1,0 +1,227 @@
+set $mod Mod1
+set $mod2 Mod4
+
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below.
+font pango:monofur for Powerline 10
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# lock screen
+bindsym $mod2+Shift+l exec swaylock
+
+# start a terminal
+#bindsym $mod+Shift+Return exec i3-sensible-terminal
+bindsym $mod+Shift+Return exec alacritty
+#bindsym $mod+Shift+Return exec urxvt
+bindsym $mod2+Shift+Return exec urxvt
+#bindsym $mod2+Shift+Return exec xfce4-terminal
+
+# rotate screen
+bindsym $mod2+Up    exec swaymsg output "eDP-1" transform "180"
+bindsym $mod2+Left  exec swaymsg output "eDP-1" transform "90"
+bindsym $mod2+Right exec swaymsg output "eDP-1" transform "270"
+bindsym $mod2+Down  exec swaymsg output "eDP-1" transform "normal"
+
+# Brightness keys
+bindsym XF86MonBrightnessUp   exec xbacklight -inc 20
+bindsym XF86MonBrightnessDown exec xbacklight -dec 20
+
+# Volume keys
+bindsym XF86AudioRaiseVolume exec amixer -D pulse set Master 5%+
+bindsym XF86AudioLowerVolume exec amixer -D pulse set Master 5%-
+bindsym XF86AudioMute exec amixer -D pulse -q set Master toggle
+
+# kill focused window
+bindsym $mod+Shift+c kill
+
+# start dmenu (a program launcher)
+#bindsym $mod+p exec dmenu_run -fn "-*-terminus-medium-r-*-*-12-*-*-*-*-*-*-*" -nb "#1f1f1f" -nf "#ffcfaf" -sb "#f0dfaf" -sf "#1f1f1f"
+bindsym $mod+p exec bemenu-run --tb "#9ece9e" --tf "#0c0c0c" --nb "#1f1f1f" --nf "#ffcfaf" --sb "#f0dfaf" --sf "#1f1f1f" --hf "#9ece9e"
+
+# gaps
+#gaps inner 10
+#gaps outer 20
+
+# change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal orientation
+bindsym $mod+b split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# focus the child container
+bindsym $mod+d focus child
+
+# switch to workspace
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+bindsym $mod2+1 workspace 11
+bindsym $mod2+2 workspace 12
+bindsym $mod2+3 workspace 13
+bindsym $mod2+4 workspace 14
+bindsym $mod2+5 workspace 15
+bindsym $mod2+6 workspace 16
+bindsym $mod2+7 workspace 17
+bindsym $mod2+8 workspace 18
+bindsym $mod2+9 workspace 19
+bindsym $mod2+0 workspace 20
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
+bindsym $mod2+$mod+1 move container to workspace 11
+bindsym $mod2+$mod+2 move container to workspace 12
+bindsym $mod2+$mod+3 move container to workspace 13
+bindsym $mod2+$mod+4 move container to workspace 14
+bindsym $mod2+$mod+5 move container to workspace 15
+bindsym $mod2+$mod+6 move container to workspace 16
+bindsym $mod2+$mod+7 move container to workspace 17
+bindsym $mod2+$mod+8 move container to workspace 18
+bindsym $mod2+$mod+9 move container to workspace 19
+bindsym $mod2+$mod+0 move container to workspace 20
+
+# reload the configuration file
+bindsym $mod+Shift+r reload
+
+# restart Sway inplace
+bindsym $mod+Shift+u restart
+
+# exit Sway
+bindsym $mod+Shift+q exec "swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit Sway?' -b 'Yes, exit Sway' 'swaymsg exit'"
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+bar {
+        font pango:monofur for Powerline 9.5
+        position       top
+        status_command i3status
+
+        colors {
+          separator  #ffcfaf
+          background #000000
+          statusline #dcdccc
+          focused_workspace  #8faf9f #9ece9e #0c0c0c
+          active_workspace   #fdf6e3 #6c71c4 #fdf6e3
+          inactive_workspace #002b36 #1f1f1f #dcdccc
+          urgent_workspace   #d33682 #d33682 #fdf6e3
+        }
+}
+# Colors
+# class                 border  backgr. text    indicator child_border
+client.focused          #8faf9f #9ece9e #0c0c0c #8faf9f
+client.focused_inactive #333333 #1f1f1f #ffffff #484e50   #5f676a
+client.unfocused        #333333 #000d18 #888888 #292d2e   #222222
+client.urgent           #2f343a #900000 #ffffff #900000   #900000
+client.placeholder      #000d18 #0c0c0c #ffffff #000d18   #0c0c0c
+client.background       #ffffff
+
+# Gnome Settings Daemon, Xresources, and Xwayland setup
+exec /usr/lib/gnome-settings-daemon/*
+exec xrdb ~/.Xresources
+exec_always xrandr --output $(xrandr | grep -m 1 XWAYLAND | awk '{print $1;}') --primary
+
+exec alacritty --class scratch_term --working-directory ~/notes
+exec urxvt -name Ranger -e ranger
+for_window [app_id="scratch_term"] move to scratchpad
+for_window [instance="Ranger"] move to scratchpad
+bindsym $mod+o [app_id="scratch_term"] scratchpad show
+bindsym $mod+Shift+o exec alacritty --class scratch_term --working-directory ~/notes
+bindsym $mod+i [instance="Ranger"] scratchpad show
+bindsym $mod+Shift+i exec urxvt -name Ranger -e ranger
+
+input * {
+  xkb_options "caps:ctrl_modifier"
+}
+
+#### LAPTOP ###
+output HDMI-A-1 pos 0  600
+output eDP-1    pos 1920  1200
+output DP-1     pos 1920 0
+
+# Sway Wallpapers
+# output "*" background ~/pics/papes/filledwallpaper.jpg fill
+# output "*" background ~/pics/papes/tiledwallpaper.jpg tile
