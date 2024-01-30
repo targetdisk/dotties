@@ -1,7 +1,7 @@
 INSTALL += $(HOME)/.profile \
 		   $(HOME)/.vim/bundle/Vundle.vim $(HOME)/.vimrc \
 		   $(HOME)/.aliases aliases
-ALIASES = $(wildcard .aliases/*)
+ALIASES = $(foreach a,$(wildcard .aliases/*),$(subst .aliases/,$(HOME)/.aliases/,$(a)))
 
 UNAME = $(shell uname)
 ifeq ($(UNAME),Darwin)
@@ -18,7 +18,7 @@ install: $(INSTALL)
 $(HOME)/.aliases:
 	mkdir $@
 
-$(HOME)/.aliases/%: .aliases/$* $(HOME)/.aliases
+$(HOME)/.aliases/%: .aliases/% $(HOME)/.aliases
 	cp $< $@
 
 aliases: $(ALIASES)
