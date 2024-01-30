@@ -1,0 +1,41 @@
+[colors.bright]
+black = "#666666"
+blue = "#8cd1ff"
+cyan = "#ffc59e"
+green = "#afffaf"
+magenta = "#b77ee0"
+red = "#ff7272"
+white = "#ffffff"
+yellow = "#ffe8a7"
+
+[colors.normal]
+black = "#000d18"
+blue = "#7dbae3"
+cyan = "#dfaf8f"
+green = "#9ece9e"
+magenta = "#c397d8"
+red = "#e66767"
+white = "#eaeaea"
+yellow = "#f0dfaf"
+
+[colors.primary]
+background = "#1f1f1f"
+foreground = "#dcdccc"
+
+[font]
+size = 9.5
+
+[font.bold]
+family = "monofur for Powerline"
+style = "Bold"
+
+[font.italic]
+family = "monofur for Powerline"
+style = "Italic"
+
+[font.normal]
+family = "monofur for Powerline"
+style = "Regular"
+
+[window]
+opacity = 0.89
