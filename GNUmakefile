@@ -1,7 +1,9 @@
 INSTALL += $(HOME)/.profile \
 		   $(HOME)/.vim/bundle/Vundle.vim $(HOME)/.vimrc \
-		   $(HOME)/.aliases aliases
+		   $(HOME)/.aliases aliases \
+		   $(HOME)/.profile.d profile.d
 ALIASES = $(foreach a,$(wildcard .aliases/*),$(subst .aliases/,$(HOME)/.aliases/,$(a)))
+PROFILEDS = $(foreach p,$(wildcard .profile.d/*),$(subst .profile.d/,$(HOME)/.profile.d/,$(p)))
 
 UNAME = $(shell uname)
 ifeq ($(UNAME),Darwin)
@@ -23,6 +25,14 @@ $(HOME)/.aliases/%: .aliases/% $(HOME)/.aliases
 
 aliases: $(ALIASES)
 
+$(HOME)/.profile.d:
+	mkdir $@
+
+$(HOME)/.profile.d/%: .profile.d/% $(HOME)/.profile.d
+	cp $< $@
+
+profileds: $(PROFILEDS)
+
 $(HOME)/.profile: $(PROFILE)
 	cp $< $@
 
@@ -41,4 +51,4 @@ $(HOME)/.vim/bundle:
 $(HOME)/.vim/bundle/Vundle.vim: $(HOME)/.vim/bundle
 	git clone https://github.com/VundleVim/Vundle.vim.git $@
 
-.PHONY: aliases
+.PHONY: aliases profileds
