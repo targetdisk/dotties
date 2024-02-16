@@ -18,7 +18,7 @@ endif
 install: $(INSTALL)
 
 $(HOME)/.aliases:
-	mkdir $@
+	mkdir -p $@
 
 $(HOME)/.aliases/%: .aliases/% $(HOME)/.aliases
 	cp $< $@
@@ -49,6 +49,6 @@ $(HOME)/.vim/bundle:
 	mkdir -p $@
 
 $(HOME)/.vim/bundle/Vundle.vim: $(HOME)/.vim/bundle
-	git clone https://github.com/VundleVim/Vundle.vim.git $@
+	git clone https://github.com/VundleVim/Vundle.vim.git $@ || cd $@; git pull; exit 0
 
 .PHONY: aliases profileds
