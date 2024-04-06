@@ -36,6 +36,9 @@ profileds: $(PROFILEDS)
 $(HOME)/.profile: $(PROFILE)
 	cp $< $@
 
+$(HOME)/.bashrc: .bashrc
+	cp $< $@
+
 /opt/local/etc/bashrc: .bashrc
 	sudo cp $< $@
 
