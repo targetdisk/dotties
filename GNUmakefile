@@ -17,11 +17,8 @@ endif
 
 install: $(INSTALL)
 
-$(HOME)/.aliases:
-	mkdir -p $@
-
-$(HOME)/.aliases/%: .aliases/% $(HOME)/.aliases
-	cp $< $@
+$(HOME)/.aliases/%: .aliases/%
+	install -D -m 644 $< $@
 
 aliases: $(ALIASES)
 
