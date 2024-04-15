@@ -11,7 +11,7 @@ ifeq ($(UNAME),Darwin)
 			   /opt/local/etc/bashrc
 	PROFILE = .profile.mac
 	INSTALL = ginstall
-ifeq ($(UNAME),FreeBSD)
+else ifeq ($(UNAME),FreeBSD)
 	DEFAULT_TARGETS += $(HOME)/.bashrc
 	PROFILE = .profile
 	INSTALL = ginstall
