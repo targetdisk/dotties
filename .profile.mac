@@ -1,6 +1,6 @@
 #[%MACPORTS%]#
 # MacPorts Installer addition on 2023-01-11_at_01:28:57: adding an appropriate PATH variable for use with MacPorts.
-export PATH="$HOME/Library/Python/3.11/bin:$HOME/perl5/bin:/opt/local/bin:/opt/local/sbin:/Applications/ArmGNUToolchain/12.2.rel1/arm-none-eabi/bin:$PATH"
+export PATH="$HOME/Library/Python/3.11/bin:$HOME/perl5/bin:$HOME/.local/bin:$HOME/.local/sbin:/opt/local/bin:/opt/local/sbin:/Applications/ArmGNUToolchain/12.2.rel1/arm-none-eabi/bin:$PATH"
 # Finished adapting your PATH environment variable for use with MacPorts.
 #[%MACPORTS%]#
 
