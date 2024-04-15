@@ -1,24 +1,30 @@
-INSTALL += $(HOME)/.profile \
+DEFAULT_TARGETS += $(HOME)/.profile \
 		   $(HOME)/.vim/bundle/Vundle.vim $(HOME)/.vimrc \
 		   aliases \
 		   $(HOME)/.profile.d profileds
 ALIASES = $(foreach a,$(wildcard .aliases/*),$(subst .aliases/,$(HOME)/.aliases/,$(a)))
 PROFILEDS = $(foreach p,$(wildcard .profile.d/*),$(subst .profile.d/,$(HOME)/.profile.d/,$(p)))
 
-UNAME = $(shell uname)
+UNAME = $(shell uname -s)
 ifeq ($(UNAME),Darwin)
-	INSTALL += /opt/local/etc/bashrc.mac \
+	DEFAULT_TARGETS += /opt/local/etc/bashrc.mac \
 			   /opt/local/etc/bashrc
 	PROFILE = .profile.mac
-else
-	INSTALL += $(HOME)/.bashrc
+	INSTALL = ginstall
+ifeq ($(UNAME),FreeBSD)
+	DEFAULT_TARGETS += $(HOME)/.bashrc
 	PROFILE = .profile
+	INSTALL = ginstall
+else
+	DEFAULT_TARGETS += $(HOME)/.bashrc
+	PROFILE = .profile
+	INSTALL = install
 endif
 
-install: $(INSTALL)
+install: $(DEFAULT_TARGETS)
 
 $(HOME)/.aliases/%: .aliases/%
-	install -D -m 644 $< $@
+	$(INSTALL) -D -m 644 $< $@
 
 aliases: $(ALIASES)
 
