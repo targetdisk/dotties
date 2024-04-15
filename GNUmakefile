@@ -11,14 +11,17 @@ ifeq ($(UNAME),Darwin)
 			   /opt/local/etc/bashrc
 	PROFILE = .profile.mac
 	INSTALL = ginstall
+	OPEN = open
 else ifeq ($(UNAME),FreeBSD)
 	DEFAULT_TARGETS += $(HOME)/.bashrc
 	PROFILE = .profile
 	INSTALL = ginstall
+	OPEN = xdg-open
 else
 	DEFAULT_TARGETS += $(HOME)/.bashrc
 	PROFILE = .profile
 	INSTALL = install
+	OPEN = xdg-open
 endif
 
 install: $(DEFAULT_TARGETS)
@@ -57,4 +60,16 @@ $(HOME)/.vim/bundle:
 $(HOME)/.vim/bundle/Vundle.vim: $(HOME)/.vim/bundle
 	git clone https://github.com/VundleVim/Vundle.vim.git $@ || cd $@; git pull; exit 0
 
-.PHONY: aliases profileds
+.PHONY: aliases profileds README
+
+### README #####################################################################
+
+pub.css:
+	wget https://github.com/manuelp/pandoc-stylesheet/raw/acac36b976966f76544176161ba826d519b6f40c/pub.css
+
+# Requires Pandoc to be installed
+README.html: README.md pub.css
+	pandoc $< -s -c pub.css -o README.html
+	$(OPEN) README.html
+
+README: README.html
