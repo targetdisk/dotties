@@ -13,7 +13,8 @@ ifeq ($(UNAME),Darwin)
 	INSTALL = ginstall
 	OPEN = open
 else ifeq ($(UNAME),FreeBSD)
-	DEFAULT_TARGETS += $(HOME)/.bashrc
+	DEFAULT_TARGETS += $(HOME)/.bashrc \
+			   $(HOME)/.bashrc.freebsd
 	PROFILE = .profile
 	INSTALL = ginstall
 	OPEN = xdg-open
@@ -43,6 +44,9 @@ $(HOME)/.profile: $(PROFILE)
 	cp $< $@
 
 $(HOME)/.bashrc: .bashrc
+	cp $< $@
+
+$(HOME)/.bashrc.freebsd: .bashrc.freebsd
 	cp $< $@
 
 /opt/local/etc/bashrc: .bashrc

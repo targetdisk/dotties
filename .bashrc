@@ -15,6 +15,8 @@ command -v uname >/dev/null &&
     FreeBSD)
       [[ $PS1 && -f /usr/local/share/bash-completion/bash_completion.sh ]] \
         && . /usr/local/share/bash-completion/bash_completion.sh
+
+      . "$HOME/.bashrc.freebsd"
       ;;
   esac \
 ;
