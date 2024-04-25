@@ -1,5 +1,6 @@
 DEFAULT_TARGETS += $(HOME)/.profile \
 		   $(HOME)/.vim/bundle/Vundle.vim $(HOME)/.vimrc \
+		   $(HOME)/.inputrc \
 		   aliases \
 		   $(HOME)/.profile.d profileds
 ALIASES = $(foreach a,$(wildcard .aliases/*),$(subst .aliases/,$(HOME)/.aliases/,$(a)))
