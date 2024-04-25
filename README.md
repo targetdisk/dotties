@@ -10,8 +10,8 @@ $ make install
 
 ### BSD and Mac
 Make sure you have the GNU Coreutils (for `ginstall`) and GNU Make (`gmake`)
-installed from your ports tree.  On MacPorts these are provided with the
-`coreutils` and `gmake` ports, respectively.
+installed from your ports tree.  On MacPorts and FreeBSD these are provided with
+the `coreutils` and `gmake` ports/packages, respectively.
 
 Once you've GNU-ified your system, you can install my dotties with:
 ```
