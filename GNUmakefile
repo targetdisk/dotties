@@ -46,6 +46,9 @@ $(HOME)/.profile: $(PROFILE)
 $(HOME)/.bashrc: .bashrc
 	cp $< $@
 
+$(HOME)/.inputrc: .inputrc
+	cp $< $@
+
 $(HOME)/.bashrc.freebsd: .bashrc.freebsd
 	cp $< $@
 
