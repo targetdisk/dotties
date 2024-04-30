@@ -15,12 +15,14 @@ ifeq ($(UNAME),Darwin)
 	OPEN = open
 else ifeq ($(UNAME),FreeBSD)
 	DEFAULT_TARGETS += $(HOME)/.bashrc \
-			   $(HOME)/.bashrc.freebsd
+			   $(HOME)/.bashrc.freebsd \
+			   $(HOME)/.sway/config
 	PROFILE = .profile
 	INSTALL = ginstall
 	OPEN = xdg-open
 else
-	DEFAULT_TARGETS += $(HOME)/.bashrc
+	DEFAULT_TARGETS += $(HOME)/.bashrc \
+			   $(HOME)/.sway/config
 	PROFILE = .profile
 	INSTALL = install
 	OPEN = xdg-open
@@ -64,6 +66,9 @@ $(HOME)/.vimrc: .vimrc
 
 $(HOME)/.vim/bundle:
 	mkdir -p $@
+
+$(HOME)/.sway/config: .sway/config
+	$(INSTALL) -D -m 644 $< $@
 
 $(HOME)/.vim/bundle/Vundle.vim: $(HOME)/.vim/bundle
 	git clone https://github.com/VundleVim/Vundle.vim.git $@ || cd $@; git pull; exit 0
