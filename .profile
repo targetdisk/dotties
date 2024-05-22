@@ -7,3 +7,11 @@ if [ -d "$HOME/.profile.d" ]; then
         . "$pd"
     done
 fi
+
+command -v uname >/dev/null &&
+  case $(uname) in
+    FreeBSD)
+      . "$HOME/.profile.freebsd"
+      ;;
+  esac \
+;

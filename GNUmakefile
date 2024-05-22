@@ -16,6 +16,7 @@ ifeq ($(UNAME),Darwin)
 else ifeq ($(UNAME),FreeBSD)
 	DEFAULT_TARGETS += $(HOME)/.bashrc \
 			   $(HOME)/.bashrc.freebsd \
+			   $(HOME)/.profile.freebsd \
 			   $(HOME)/.sway/config
 	PROFILE = .profile
 	INSTALL = ginstall
@@ -44,6 +45,9 @@ $(HOME)/.profile.d/%: .profile.d/% $(HOME)/.profile.d
 profileds: $(PROFILEDS)
 
 $(HOME)/.profile: $(PROFILE)
+	cp $< $@
+
+$(HOME)/.profile.freebsd: .profile.freebsd
 	cp $< $@
 
 $(HOME)/.bashrc: .bashrc
