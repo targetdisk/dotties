@@ -1,6 +1,7 @@
 DEFAULT_TARGETS += $(HOME)/.profile \
 		   $(HOME)/.vim/bundle/Vundle.vim $(HOME)/.vimrc \
 		   $(HOME)/.inputrc \
+		   $(HOME)/.config/alacritty/alacritty.toml \
 		   aliases \
 		   $(HOME)/.profile.d profileds
 ALIASES = $(foreach a,$(wildcard .aliases/*),$(subst .aliases/,$(HOME)/.aliases/,$(a)))
@@ -70,6 +71,9 @@ $(HOME)/.vimrc: .vimrc
 
 $(HOME)/.vim/bundle:
 	mkdir -p $@
+
+$(HOME)/.config/alacritty/alacritty.toml: .config/alacritty/alacritty.toml
+	$(INSTALL) -D -m 644 $< $@
 
 $(HOME)/.sway/config: .sway/config
 	$(INSTALL) -D -m 644 $< $@
