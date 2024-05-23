@@ -81,7 +81,21 @@ $(HOME)/.sway/config: .sway/config
 $(HOME)/.vim/bundle/Vundle.vim: $(HOME)/.vim/bundle
 	git clone https://github.com/VundleVim/Vundle.vim.git $@ || cd $@; git pull; exit 0
 
-.PHONY: aliases profileds README
+$(HOME)/.Xmodcapslock: x-crap/.Xmodcapslock
+	cp $< $@
+
+$(HOME)/.Xdefaults: x-crap/.Xdefaults
+	cp $< $@
+
+$(HOME)/.Xresources: x-crap/.Xresources
+	cp $< $@
+
+$(HOME)/.xinitrc: x-crap/.xinitrc
+	cp $< $@
+
+x-crap: $(HOME)/.Xmodcapslock $(HOME)/.Xdefaults $(HOME)/.Xresources $(HOME)/.xinitrc
+
+.PHONY: aliases profileds README x-crap
 
 ### README #####################################################################
 

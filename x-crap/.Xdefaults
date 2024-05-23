@@ -1,0 +1,23 @@
+*xterm*background: #101010
+*xterm*foreground: #d0d0d0
+
+!URxvt*background: #101010
+!URxvt*foreground: #d0d0d0
+URxvt*scrollBar: false
+URxvt*font: xft:monofur for Powerline:pixelsize=16:antialias=true
+!URxvt*font: xft:monofur for Powerline:pixelsize=15:antialias=true
+!URxvt*font: xft:monofur for Powerline:pixelsize=13:antialias=true
+!URxvt*font: xft:monofur for Powerline:pixelsize=14:antialias=true
+!URxvt*font: xft:monofur for Powerline:pixelsize=11:antialias=true
+
+URxvt.perl-ext: default,resize-font,clipboard
+
+URxvt.keysym.Control-Up:     \033[1;5A
+URxvt.keysym.Control-Down:   \033[1;5B
+URxvt.keysym.Control-Left:   \033[1;5D
+URxvt.keysym.Control-Right:  \033[1;5C
+
+!Transparency
+urxvt*transparent: true
+!urxvt*shading: 30
+urxvt*shading: 20
