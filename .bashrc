@@ -9,6 +9,8 @@ simpleplay() {
 
 command -v uname >/dev/null &&
   case $(uname) in
+    Linux)
+      alias ls='ls --color'
     Darwin)
       command -v port >/dev/null && . /opt/local/etc/bashrc.mac
       ;;
