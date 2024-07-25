@@ -15,5 +15,8 @@ command -v uname >/dev/null &&
     FreeBSD)
       . "$HOME/.profile.freebsd"
       ;;
+    Linux)
+      . "$HOME/.profile.linux"
+      ;;
   esac \
 ;
