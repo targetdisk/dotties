@@ -22,6 +22,13 @@ else ifeq ($(UNAME),FreeBSD)
 	PROFILE = .profile
 	INSTALL = ginstall
 	OPEN = xdg-open
+else ifeq ($(UNAME),Linux)
+	DEFAULT_TARGETS += $(HOME)/.bashrc \
+			   $(HOME)/.sway/config \
+			   $(HOME)/.profile.linux
+	PROFILE = .profile
+	INSTALL = install
+	OPEN = xdg-open
 else
 	DEFAULT_TARGETS += $(HOME)/.bashrc \
 			   $(HOME)/.sway/config
@@ -48,7 +55,7 @@ profileds: $(PROFILEDS)
 $(HOME)/.profile: $(PROFILE)
 	cp $< $@
 
-$(HOME)/.profile.freebsd: .profile.freebsd
+$(HOME)/.profile.%: .profile.%
 	cp $< $@
 
 $(HOME)/.bashrc: .bashrc
@@ -57,13 +64,13 @@ $(HOME)/.bashrc: .bashrc
 $(HOME)/.inputrc: .inputrc
 	cp $< $@
 
-$(HOME)/.bashrc.freebsd: .bashrc.freebsd
+$(HOME)/.bashrc.%: .bashrc.%
 	cp $< $@
 
 /opt/local/etc/bashrc: .bashrc
 	sudo cp $< $@
 
-/opt/local/etc/bashrc.mac: .bashrc.mac
+/opt/local/etc/bashrc.%: .bashrc.%
 	sudo cp $< $@
 
 $(HOME)/.vimrc: .vimrc
