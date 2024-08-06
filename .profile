@@ -20,3 +20,5 @@ command -v uname >/dev/null &&
       ;;
   esac \
 ;
+
+export EDITOR=`which vim`
