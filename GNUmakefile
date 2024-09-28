@@ -17,21 +17,18 @@ ifeq ($(UNAME),Darwin)
 else ifeq ($(UNAME),FreeBSD)
 	DEFAULT_TARGETS += $(HOME)/.bashrc \
 			   $(HOME)/.bashrc.freebsd \
-			   $(HOME)/.profile.freebsd \
-			   $(HOME)/.sway/config
+			   $(HOME)/.profile.freebsd
 	PROFILE = .profile
 	INSTALL = ginstall
 	OPEN = xdg-open
 else ifeq ($(UNAME),Linux)
 	DEFAULT_TARGETS += $(HOME)/.bashrc \
-			   $(HOME)/.sway/config \
 			   $(HOME)/.profile.linux
 	PROFILE = .profile
 	INSTALL = install
 	OPEN = xdg-open
 else
-	DEFAULT_TARGETS += $(HOME)/.bashrc \
-			   $(HOME)/.sway/config
+	DEFAULT_TARGETS += $(HOME)/.bashrc
 	PROFILE = .profile
 	INSTALL = install
 	OPEN = xdg-open
@@ -85,6 +82,8 @@ $(HOME)/.config/alacritty/alacritty.toml: .config/alacritty/alacritty.toml
 $(HOME)/.sway/config: .sway/config
 	$(INSTALL) -D -m 644 $< $@
 
+sway: $(HOME)/.sway/config
+
 $(HOME)/.vim/bundle/Vundle.vim: $(HOME)/.vim/bundle
 	git clone https://github.com/VundleVim/Vundle.vim.git $@ || cd $@; git pull; exit 0
 
@@ -102,7 +101,7 @@ $(HOME)/.xinitrc: x-crap/.xinitrc
 
 x-crap: $(HOME)/.Xmodcapslock $(HOME)/.Xdefaults $(HOME)/.Xresources $(HOME)/.xinitrc
 
-.PHONY: aliases profileds README x-crap
+.PHONY: aliases profileds README x-crap sway
 
 ### README #####################################################################
 
