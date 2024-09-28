@@ -1,5 +1,17 @@
 #!/usr/bin/env bash
 
+HISTSIZE=10000
+HISTFILESIZE=900000
+
+case ${TERM} in
+  xterm*|rxvt*|Eterm|aterm|kterm|gnome*|alacritty*)
+    PS1='\h:\[\033[38;5;219m\]\W\[\033[00m\] \[\033[01;35m\]\u\[\033[00m\]\$ '
+    ;;
+  *)
+    PS1='\h:\W \u\$ '
+    ;;
+esac
+
 simplefind() { find . -iname '*'"$@"'*'; }
 simpleplay() {
   find . -iname '*'"$@"'*' -print0 \
@@ -11,6 +23,7 @@ command -v uname >/dev/null &&
   case $(uname) in
     Linux)
       alias ls='ls --color'
+      [ -f /etc/os-release ] && . /etc/os-release
       ;;
     Darwin)
       command -v port >/dev/null && . /opt/local/etc/bashrc.mac
