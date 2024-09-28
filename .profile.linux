@@ -1,1 +1,1 @@
-[ -z  "$XDG_RUNTIME_DIR" ] && export XDG_RUNTIME_DIR=/tmp/runtime-`id -u`
+export XDG_RUNTIME_DIR=${XDG_RUNTIME_DIR:-/tmp/runtime-`id -u`}
