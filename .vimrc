@@ -50,6 +50,10 @@ Plugin 'prabirshrestha/vim-lsp'
 Plugin 'prabirshrestha/asyncomplete.vim'
 Plugin 'prabirshrestha/asyncomplete-lsp.vim'
 
+" My Librecode helpers
+Plugin 'targetdisk/minitator'
+au BufRead,BufNewFile *.annotated.head.json call minitator#macros()
+
 call vundle#end()
 
 """""""""""""""""""""""""""""""
