@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+for af in "$HOME/.aliases"/*; do
+    . "$af"
+done
+
 HISTSIZE=10000
 HISTFILESIZE=900000
 

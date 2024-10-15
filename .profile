@@ -1,7 +1,3 @@
-for af in "$HOME/.aliases"/*; do
-    . "$af"
-done
-
 [ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
 
 if [ -d "$HOME/.profile.d" ]; then
