@@ -249,7 +249,13 @@ set ruler
 set number
 "set autoindent
 set cursorline
-"set background=dark
+
+" I use dark mode on all platforms except for Macintosh.
+if has('macunix') || has('mac')
+  set background=light
+else
+  set background=dark
+endif
 
 " For login terminals on Macs
 set shell=bash\ -l
