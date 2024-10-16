@@ -280,6 +280,8 @@ map <F2> :!git grep -n '<cword>' $(git rev-parse --show-toplevel)<cr>
 map <F3> :!git blame %<cr>
 map <F5> :w!<cr>:!xelatex %<cr>
 map <F9> :w!<cr>:!md-previewer %<cr>
+map <F11> :set background=dark<cr>
+map <S-F11> :set background=light<cr>
 map <F12> :mksession!<cr>
 
 " Rainbow Parenthesis settings
