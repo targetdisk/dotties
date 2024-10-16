@@ -45,7 +45,7 @@ bindsym $mod2+Shift+1 exec projectM-pulseaudio
 bindsym $mod+Shift+c kill
 
 # start dmenu (a program launcher)
-bindsym $mod+p exec bemenu-run --tb "#9ece9e" --tf "#0c0c0c" --nb "#1f1f1f" --nf "#ffcfaf" --sb "#f0dfaf" --sf "#1f1f1f" --hf "#9ece9e"
+bindsym $mod+p exec bemenu-run --border 3 --bdr "#0c0c0c" --fn "Monofur Nerd Font Propo 10" --tb "#9ece9e" --tf "#0c0c0c" --nb "#1f1f1f" --nf "#ffcfaf" --sb "#f0dfaf" --sf "#1f1f1f" --hf "#9ece9e"
 
 # thigh gaps
 # gaps inner 10
