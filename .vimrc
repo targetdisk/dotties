@@ -177,6 +177,15 @@ if executable('typescript-language-server')
         \ })
 endif
 
+" Java! (kill me)
+if executable('jdtls')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'Eclipse JDT Language Server',
+        \ 'cmd': {server_info->['jdtls', '-data', getcwd()]},
+        \ 'allowlist': ['java']
+        \ })
+endif
+
 " LSP config
 function! s:on_lsp_buffer_enabled() abort
     setlocal omnifunc=lsp#complete
