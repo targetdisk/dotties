@@ -100,6 +100,14 @@ $(HOME)/.vim/bundle:
 $(HOME)/.vim/bundle/Vundle.vim: $(HOME)/.vim/bundle
 	git clone https://github.com/VundleVim/Vundle.vim.git $@ || cd $@; git pull; exit 0
 
+### PIPEWIRE ###################################################################
+
+$(HOME)/.config/pipewire/pipewire.conf: .config/pipewire/pipewire.conf
+	$(INSTALL) -D -m 644 $< $@
+
+restart-pw:
+	systemctl restart --user pipewire{,-pulse}{.service,.socket}
+
 ### X.ORG CRAP #################################################################
 
 $(HOME)/.Xmodcapslock: x-crap/.Xmodcapslock
@@ -118,7 +126,7 @@ x-crap: $(HOME)/.Xmodcapslock $(HOME)/.Xdefaults $(HOME)/.Xresources $(HOME)/.xi
 
 ### "PHONY" TARGETS ############################################################
 
-.PHONY: aliases profileds README x-crap sway i3status
+.PHONY: aliases profileds README x-crap sway i3status restart-pw pipewire
 
 ### README #####################################################################
 
