@@ -8,7 +8,7 @@ HISTSIZE=10000
 HISTFILESIZE=900000
 
 case ${TERM} in
-  xterm*|rxvt*|Eterm|aterm|kterm|gnome*|alacritty*)
+  xterm*|rxvt*|Eterm|aterm|kterm|gnome*|alacritty*|tmux-256color)
     PS1='\[\033]2;\h:\W \u\007\]\h:\[\033[38;5;219m\]\W\[\033[00m\] \[\033[01;35m\]\u\[\033[00m\]\$ '
     ;;
   *)
