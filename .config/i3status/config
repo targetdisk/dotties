@@ -114,10 +114,6 @@ disk "/mnt/snot" {
     format = "/mnt/snot %avail"
 }
 
-disk "/" {
-    format = "/ %avail"
-}
-
 disk "/mnt/psp" {
     format = "/mnt/psp %avail"
 }
