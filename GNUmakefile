@@ -36,6 +36,8 @@ endif
 
 install: $(DEFAULT_TARGETS)
 
+### SHELL COMFY ################################################################
+
 $(HOME)/.aliases/%: .aliases/%
 	$(INSTALL) -D -m 644 $< $@
 
@@ -70,22 +72,35 @@ $(HOME)/.bashrc.%: .bashrc.%
 /opt/local/etc/bashrc.%: .bashrc.%
 	sudo cp $< $@
 
+### TERMINAL EMULATOR ##########################################################
+
+$(HOME)/.config/alacritty/alacritty.toml: .config/alacritty/alacritty.toml
+	$(INSTALL) -D -m 644 $< $@
+
+### SWAY #######################################################################
+
+$(HOME)/.sway/config: .sway/config
+	$(INSTALL) -D -m 644 $< $@
+
+$(HOME)/.config/i3status/config: .config/i3status/config
+	$(INSTALL) -D -m 644 $< $@
+
+i3status: $(HOME)/.config/i3status/config
+
+sway: $(HOME)/.sway/config $(HOME)/.config/i3status/config
+
+### VIM ########################################################################
+
 $(HOME)/.vimrc: .vimrc
 	cp $< $@
 
 $(HOME)/.vim/bundle:
 	mkdir -p $@
 
-$(HOME)/.config/alacritty/alacritty.toml: .config/alacritty/alacritty.toml
-	$(INSTALL) -D -m 644 $< $@
-
-$(HOME)/.sway/config: .sway/config
-	$(INSTALL) -D -m 644 $< $@
-
-sway: $(HOME)/.sway/config
-
 $(HOME)/.vim/bundle/Vundle.vim: $(HOME)/.vim/bundle
 	git clone https://github.com/VundleVim/Vundle.vim.git $@ || cd $@; git pull; exit 0
+
+### X.ORG CRAP #################################################################
 
 $(HOME)/.Xmodcapslock: x-crap/.Xmodcapslock
 	cp $< $@
@@ -101,7 +116,9 @@ $(HOME)/.xinitrc: x-crap/.xinitrc
 
 x-crap: $(HOME)/.Xmodcapslock $(HOME)/.Xdefaults $(HOME)/.Xresources $(HOME)/.xinitrc
 
-.PHONY: aliases profileds README x-crap sway
+### "PHONY" TARGETS ############################################################
+
+.PHONY: aliases profileds README x-crap sway i3status
 
 ### README #####################################################################
 
