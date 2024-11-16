@@ -27,7 +27,7 @@ command -v uname >/dev/null &&
   case $(uname) in
     Linux)
       alias ls='ls --color'
-      [ -f /etc/os-release ] && . /etc/os-release
+      [ -z "$ID" ] && [ -f /etc/os-release ] && . /etc/os-release
       ;;
     Darwin)
       command -v port >/dev/null && . /opt/local/etc/bashrc.mac

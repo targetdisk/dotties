@@ -10,6 +10,14 @@ if [ -z  "$XDG_RUNTIME_DIR" ]; then
     export LIBSEAT_BACKEND=seatd
 fi
 
+[ -z "$ID" ] && [ -f /etc/os-release ] && . /etc/os-release
+case $ID in
+  arch)
+    export GUILE_LOAD_PATH='/usr/local/share/guile/site/3.0:/usr/share/guile/3.0:/usr/share/guile/site/3.0:/usr/share/guile/site:/usr/share/guile'
+    ;;
+esac
+
+
 if [ -z "$WAYLAND_DISPLAY" ] && [ "$(tty)" == '/dev/tty1' ] && command -v sway; then
     exec dbus-run-session sway -d |& tee /tmp/sway-$UID.log
 fi
