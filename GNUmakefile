@@ -1,4 +1,4 @@
-DEFAULT_TARGETS += $(HOME)/.profile \
+DEFAULT_TARGETS += $(HOME)/.bash_profile \
 		   $(HOME)/.vim/bundle/Vundle.vim $(HOME)/.vimrc \
 		   $(HOME)/.inputrc \
 		   $(HOME)/.config/alacritty/alacritty.toml \
@@ -51,7 +51,7 @@ $(HOME)/.profile.d/%: .profile.d/% $(HOME)/.profile.d
 
 profileds: $(PROFILEDS)
 
-$(HOME)/.profile: $(PROFILE)
+$(HOME)/.bash_profile: $(PROFILE)
 	cp $< $@
 
 $(HOME)/.profile.%: .profile.%
@@ -76,6 +76,8 @@ $(HOME)/.bashrc.%: .bashrc.%
 
 $(HOME)/.config/alacritty/alacritty.toml: .config/alacritty/alacritty.toml
 	$(INSTALL) -D -m 644 $< $@
+
+alacritty: $(HOME)/.config/alacritty/alacritty.toml
 
 ### SWAY #######################################################################
 
@@ -126,7 +128,7 @@ x-crap: $(HOME)/.Xmodcapslock $(HOME)/.Xdefaults $(HOME)/.Xresources $(HOME)/.xi
 
 ### "PHONY" TARGETS ############################################################
 
-.PHONY: aliases profileds README x-crap sway i3status restart-pw pipewire
+.PHONY: aliases profileds README x-crap sway i3status restart-pw pipewire alacritty
 
 ### README #####################################################################
 
