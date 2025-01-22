@@ -27,3 +27,6 @@ fi
 
 # Makes Vim and friends behave!
 export LANG=en_US.UTF-8
+
+# Make GPG and Git signing behave!
+export GPG_TTY=$(tty)

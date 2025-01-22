@@ -22,3 +22,6 @@ command -v uname >/dev/null &&
 ;
 
 export EDITOR=`which vim`
+
+# Make GPG and Git signing behave!
+export GPG_TTY=$(tty)
