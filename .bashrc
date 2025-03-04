@@ -28,6 +28,9 @@ command -v uname >/dev/null &&
     Linux)
       alias ls='ls --color'
       [ -z "$ID" ] && [ -f /etc/os-release ] && . /etc/os-release
+
+      [ -r /usr/share/bash-completion/bash_completion   ] \
+        && . /usr/share/bash-completion/bash_completion
       ;;
     Darwin)
       command -v port >/dev/null && . /opt/local/etc/bashrc.mac
