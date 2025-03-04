@@ -6,6 +6,7 @@ DEFAULT_TARGETS += $(HOME)/.bash_profile \
 		   $(HOME)/.profile.d profileds
 ALIASES = $(foreach a,$(wildcard .aliases/*),$(subst .aliases/,$(HOME)/.aliases/,$(a)))
 PROFILEDS = $(foreach p,$(wildcard .profile.d/*),$(subst .profile.d/,$(HOME)/.profile.d/,$(p)))
+DOSU ?= $(shell command -v sudo || which doas)
 
 UNAME = $(shell uname -s)
 ifeq ($(UNAME),Darwin)
@@ -60,6 +61,9 @@ $(HOME)/.profile.%: .profile.%
 $(HOME)/.bashrc: .bashrc
 	cp $< $@
 
+/etc/bash.bashrc: .bashrc
+	$(DOSU) cp $< $@
+
 $(HOME)/.inputrc: .inputrc
 	cp $< $@
 
@@ -67,10 +71,10 @@ $(HOME)/.bashrc.%: .bashrc.%
 	cp $< $@
 
 /opt/local/etc/bashrc: .bashrc
-	sudo cp $< $@
+	$(DOSU) cp $< $@
 
 /opt/local/etc/bashrc.%: .bashrc.%
-	sudo cp $< $@
+	$(DOSU) cp $< $@
 
 ### TERMINAL EMULATOR ##########################################################
 
