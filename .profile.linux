@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+shopt -q login_shell && . $HOME/.bashrc
+
 # Make compositor behave on Alpine
 if [ -z  "$XDG_RUNTIME_DIR" ]; then
     export XDG_RUNTIME_DIR=/tmp/runtime-$UID
