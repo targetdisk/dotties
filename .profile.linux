@@ -16,6 +16,7 @@ fi
 case $ID in
   arch)
     export GUILE_LOAD_PATH='/usr/local/share/guile/site/3.0:/usr/share/guile/3.0:/usr/share/guile/site/3.0:/usr/share/guile/site:/usr/share/guile'
+    export PATH="$PATH:/usr/bin/core_perl"
     ;;
 esac
 
