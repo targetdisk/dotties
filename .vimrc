@@ -301,3 +301,6 @@ au Syntax * RainbowParenthesesLoadBraces
 
 " Read my lips: NO MOUSE
 autocmd BufEnter * set mouse=
+
+" Netrw defaults
+let g:netrw_liststyle = 3
